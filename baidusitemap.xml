@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://blog.reve.fun/archives/5d88249d.html</loc>
-    <lastmod>2023-05-05</lastmod>
-  </url>
-  <url>
-    <loc>http://blog.reve.fun/archives/83bae515.html</loc>
-    <lastmod>2023-05-05</lastmod>
-  </url>
-  <url>
     <loc>http://blog.reve.fun/archives/92d4d1dc.html</loc>
     <lastmod>2023-05-05</lastmod>
   </url>
@@ -46,6 +38,14 @@
   </url>
   <url>
     <loc>http://blog.reve.fun/archives/3011f7d1.html</loc>
+    <lastmod>2023-05-05</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.reve.fun/archives/5d88248d.html</loc>
+    <lastmod>2023-05-05</lastmod>
+  </url>
+  <url>
+    <loc>http://blog.reve.fun/archives/83bae515.html</loc>
     <lastmod>2023-05-05</lastmod>
   </url>
 </urlset> 

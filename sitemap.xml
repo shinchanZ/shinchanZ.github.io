@@ -2,24 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.reve.fun/archives/5d88249d.html</loc>
-    
-    <lastmod>2023-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.reve.fun/archives/83bae515.html</loc>
-    
-    <lastmod>2023-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.reve.fun/archives/92d4d1dc.html</loc>
     
     <lastmod>2023-05-05</lastmod>
@@ -147,6 +129,24 @@
   
   <url>
     <loc>http://blog.reve.fun/tags/index.html</loc>
+    
+    <lastmod>2023-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.reve.fun/archives/5d88248d.html</loc>
+    
+    <lastmod>2023-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.reve.fun/archives/83bae515.html</loc>
     
     <lastmod>2023-05-05</lastmod>
     
