@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Z">
+
+
+
+    <meta name="description" content="个人博客网站, 个人QQ(1154946489)">
+
+
+    <meta name="keywords" content="blog,个人博客,前端开发,vue">
+
+
+<title>基于VUE的H5页面制作 | Z</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Plus Ultra</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Plus Ultra</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">基于VUE的H5页面制作</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Z</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 22, 2019&nbsp;&nbsp;12:39:04</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="基于VUE的H5页面制作"><a href="#基于VUE的H5页面制作" class="headerlink" title="基于VUE的H5页面制作"></a>基于VUE的H5页面制作</h2><h4 id="一、vuecli3的搭建"><a href="#一、vuecli3的搭建" class="headerlink" title="一、vuecli3的搭建"></a>一、vuecli3的搭建</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vue ui</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="二、slide整屏翻页的实现"><a href="#二、slide整屏翻页的实现" class="headerlink" title="二、slide整屏翻页的实现"></a>二、slide整屏翻页的实现</h4><p>swiper轮播插件–<a target="_blank" rel="noopener" href="https://www.swiper.com.cn/">swiper官网</a></p>
+<h6 id="1-安装和配置"><a href="#1-安装和配置" class="headerlink" title="1.安装和配置"></a>1.安装和配置</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-awesome-swiper --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import VueAwesomeSwiper from &#x27;vue-awesome-swiper&#x27;</span><br><span class="line">import &#x27;swiper/dist/css/swiper.css&#x27;</span><br><span class="line"></span><br><span class="line">Vue.use(VueAwesomeSwiper, /* &#123; default global options &#125; */)</span><br></pre></td></tr></table></figure>
+<h6 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//引入</span><br><span class="line">import &#123;swiper, swiperSlide&#125; from &#x27;vue-awesome-swiper&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//注册组件</span><br><span class="line">components: &#123;</span><br><span class="line">          swiper,</span><br><span class="line">          swiperSlide,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//HTML部分</span><br><span class="line">&lt;swiper :options=&quot;swiperOption&quot; ref=&quot;myswiper&quot;&gt;</span><br><span class="line">&lt;swiperSlide style=&quot;background-color: orange&quot;&gt;第一页&lt;/swiperSlide&gt;</span><br><span class="line">&lt;swiperSlide style=&quot;background-color: blue&quot;&gt;第二页&lt;/swiperSlide&gt;</span><br><span class="line">&lt;swiperSlide style=&quot;background-color: gray&quot;&gt;第三页&lt;/swiperSlide&gt;</span><br><span class="line">&lt;/swiper&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//配置部分</span><br><span class="line">data()&#123;</span><br><span class="line">  return&#123;</span><br><span class="line">  swiper: null,</span><br><span class="line">  swiperOption: &#123;</span><br><span class="line">      // swiper configs 所有的配置同swiper官方api配置</span><br><span class="line">      speed: 600,</span><br><span class="line">      direction: &#x27;vertical&#x27;,</span><br><span class="line">      autoHeight: true,</span><br><span class="line">      slidesPerView: 1,</span><br><span class="line">      mousewheel: true,</span><br><span class="line">      height: window.innerHeight,</span><br><span class="line">      resistanceRatio: 0.85,</span><br><span class="line">      observeParents: true,//</span><br><span class="line">      effect: &#x27;coverflow&#x27;,</span><br><span class="line">      coverflowEffect: &#123;</span><br><span class="line">          rotate: 10,</span><br><span class="line">          stretch: 0,</span><br><span class="line">          depth: 200,</span><br><span class="line">          modifier: 2,</span><br><span class="line">          slideShadows: true</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//swiperAnimate动画的应用</span><br><span class="line">//引入</span><br><span class="line">npm install vue2-animate --save</span><br><span class="line">import &#x27;vue2-animate/dist/vue2-animate.min.css&#x27;;</span><br><span class="line">import * as swiperAni from &#x27;@/utils/swiper.animate.min.js&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//html</span><br><span class="line">&lt;p class=&quot;ani&quot; swiper-animate-effect=&quot;fadeInLeft&quot; swiper-animate-duration=&quot;0.6s&quot;</span><br><span class="line">        swiper-animate-delay=&quot;0.6s&quot;&gt;我是谁&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;ani&quot; swiper-animate-effect=&quot;fadeInLeft&quot; swiper-animate-duration=&quot;0.6s&quot;</span><br><span class="line">        swiper-animate-delay=&quot;1.2s&quot;&gt;我在哪&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;ani&quot; swiper-animate-effect=&quot;fadeInLeft&quot; swiper-animate-duration=&quot;0.6s&quot;</span><br><span class="line">        swiper-animate-delay=&quot;1.8s&quot;&gt;我要去哪&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//载入动画配置</span><br><span class="line">on: &#123;</span><br><span class="line">      init: function () &#123;</span><br><span class="line">      swiperAni.swiperAnimateCache(this); //隐藏动画元素</span><br><span class="line">      swiperAni.swiperAnimate(this); //初始化完成开始动画</span><br><span class="line">            &#125;,</span><br><span class="line">      slideChangeTransitionEnd: function () &#123;</span><br><span class="line">       swiperAni.swiperAnimate(this); //每个slide切换结束时也运行当前slide动画</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  <a target="_blank" rel="noopener" href="https://www.swiper.com.cn/download/index.html">swiperAnimatejs文件下载</a></p>
+<p>  <a target="_blank" rel="noopener" href="https://daneden.github.io/animate.css/">animate动画效果</a></p>
+<h4 id="三、移动端适配（px转rem）"><a href="#三、移动端适配（px转rem）" class="headerlink" title="三、移动端适配（px转rem）"></a>三、移动端适配（px转rem）</h4><h6 id="1-引入lib-flexible"><a href="#1-引入lib-flexible" class="headerlink" title="1.引入lib-flexible"></a>1.引入lib-flexible</h6>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//安装</span><br><span class="line">npm i lib-flexible --save</span><br><span class="line">//引入</span><br><span class="line">import &#x27;lib-flexible/flexible&#x27;</span><br></pre></td></tr></table></figure>
+<h6 id="2-设置meta标签"><a href="#2-设置meta标签" class="headerlink" title="2.设置meta标签"></a>2.设置meta标签</h6><p>  通过meta标签，设置设备宽度以及缩放比例<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h6 id="3-pxtorem"><a href="#3-pxtorem" class="headerlink" title="3.pxtorem"></a>3.pxtorem</h6>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//安装</span><br><span class="line">npm install postcss-pxtorem -S</span><br><span class="line">//配置（根目录postcss.config.js）</span><br><span class="line">&quot;postcss&quot;: &#123;</span><br><span class="line">    &quot;plugins&quot;: &#123;</span><br><span class="line">      &quot;autoprefixer&quot;: &#123;&#125;,</span><br><span class="line">      &quot;postcss-pxtorem&quot;: &#123;</span><br><span class="line">        &quot;rootValue&quot;: 75 ,// 设计稿宽度的1/10,</span><br><span class="line">        &quot;propList&quot;:[&#x27;*&#x27;],// 需要做转化处理的属性，如`hight`、`width`、`margin`等，`*`表示全部</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/vue/"># vue</a>
+                    
+                        <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"># 移动端</a>
+                    
+                        <a href="/tags/H5/"># H5</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/archives/837eac20.html">VUE前端性能优化</a>
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Z | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20010255号</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

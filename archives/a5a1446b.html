@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Z">
+
+
+
+    <meta name="description" content="个人博客网站, 个人QQ(1154946489)">
+
+
+    <meta name="keywords" content="blog,个人博客,前端开发,vue">
+
+
+<title>jszip 读取zip压缩包内容 | Z</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Plus Ultra</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Plus Ultra</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">jszip 读取zip压缩包内容</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Z</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 15, 2020&nbsp;&nbsp;20:50:40</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="jszip-读取zip压缩包内容"><a href="#jszip-读取zip压缩包内容" class="headerlink" title="jszip 读取zip压缩包内容"></a>jszip 读取zip压缩包内容</h1><h3 id="1-要求"><a href="#1-要求" class="headerlink" title="1.要求"></a>1.要求</h3><blockquote>
+<ul>
+<li>后端文件以流的形式返回</li>
+<li>只能是zip包</li>
+</ul>
+</blockquote>
+<h3 id="2-设置接收类型"><a href="#2-设置接收类型" class="headerlink" title="2. 设置接收类型"></a>2. 设置接收类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url</span>: <span class="string">&#x27;api/v1/***&#x27;</span>,</span><br><span class="line"> <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line"> <span class="attr">params</span>: &#123;&#125;,</span><br><span class="line"> <span class="attr">responseType</span>: <span class="string">&quot;arraybuffer&quot;</span><span class="comment">//主要是请求时加上这一行</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-使用jszip解压读取"><a href="#3-使用jszip解压读取" class="headerlink" title="3.使用jszip解压读取"></a>3.使用jszip解压读取</h3><h4 id="1）安装jszip"><a href="#1）安装jszip" class="headerlink" title="1）安装jszip"></a>1）安装jszip</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jszip</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-引入并使用"><a href="#2-引入并使用" class="headerlink" title="2)引入并使用"></a>2)引入并使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">JSZip</span> <span class="keyword">from</span> <span class="string">&#x27;jszip&#x27;</span> </span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用axios请求获取</span></span><br><span class="line"><span class="title function_">apiGetZip</span>(query).<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> files = <span class="keyword">new</span> <span class="title class_">Blob</span>([response.<span class="property">data</span>], &#123;<span class="attr">type</span>: <span class="string">&#x27;application/zip&#x27;</span>&#125;);</span><br><span class="line">          <span class="comment">// let files = new window.File([response.data], &#x27;截图&#x27;, &#123;type: &#x27;zip&#x27;&#125;)</span></span><br><span class="line">          <span class="comment">// 读取zip压缩文件里面的文件内容</span></span><br><span class="line">          <span class="keyword">let</span> zip = <span class="keyword">new</span> <span class="title class_">JSZip</span>()</span><br><span class="line">          zip.<span class="title function_">loadAsync</span>(files).<span class="title function_">then</span>(<span class="function">(<span class="params">zip</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(zip)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> zip.<span class="property">files</span>) &#123;</span><br><span class="line">              <span class="keyword">if</span> (!zip.<span class="property">files</span>[key].<span class="property">dir</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="regexp">/\.(png|jpg|jpeg|gif)$/</span>.<span class="title function_">test</span>(zip.<span class="property">files</span>[key].<span class="property">name</span>)) &#123; <span class="comment">// 判断是否是图片格式</span></span><br><span class="line">                  <span class="keyword">let</span> base = zip.<span class="title function_">file</span>(zip.<span class="property">files</span>[key].<span class="property">name</span>).<span class="title function_">async</span>(</span><br><span class="line">                    <span class="string">&#x27;base64&#x27;</span>) <span class="comment">// 将图片转化为base64格式</span></span><br><span class="line">                  base.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="property">imgList</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">                      <span class="attr">fileName</span>: zip.<span class="property">files</span>[key].<span class="property">name</span>,</span><br><span class="line">                      <span class="attr">type</span>: <span class="string">&#x27;img&#x27;</span>,</span><br><span class="line">                      <span class="attr">content</span>: <span class="string">`data:image/png;base64,<span class="subst">$&#123;res&#125;</span>`</span></span><br><span class="line">                    &#125;)</span><br><span class="line">                  &#125;)</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+        </div>
+
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/javascript/"># javascript</a>
+                    
+                        <a href="/tags/jszip/"># jszip</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/archives/a78f843.html">vue cli  生产环境打包去除console</a>
+            
+            
+            <a class="next" rel="next" href="/archives/34e0fdd2.html">js操作vue文件里的变量和方法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Z | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://beian.miit.gov.cn/" target="_blank">豫ICP备20010255号</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
