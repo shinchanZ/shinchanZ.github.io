@@ -1,0 +1,17 @@
+<header>
+  <div class="site-branding">
+    <div class="site-title">
+      <div class="avatar">
+        <a href="<%-config.root %>"><img src="<%- url_for(theme.avatar) %>"></a>
+      </div>
+    </div>
+    <p class="site-description"><% if (config.subtitle){ %><%= config.subtitle %><% } %></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      <% for (var i in theme.menu){ %>
+        <li><a href="<%- url_for(theme.menu[i]) %>"><%= __(i) %></a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
