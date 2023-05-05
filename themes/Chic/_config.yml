@@ -1,5 +1,5 @@
 # Header
-navname: Plus Ultra
+navname: Crayon Shin-chan
 
 # navigatior items
 nav:
@@ -12,10 +12,10 @@ nav:
 favicon: /favicon.ico
 
 # Profile
-nickname: Z 少年
+nickname: Crayon Shin-chan
 
 ### this variable is MarkDown form.
-description: Lorem ipsum dolor sit amet, **consectetur adipiscing elit.** <br>Fusce eget urna vitae velit *eleifend interdum at ac* nisi.
+description: Love yourself!
 avatar: /image/avatar.jpeg
 
 # main menu navigation
@@ -49,7 +49,7 @@ links:
 #  QQ:
 #  Weibo:
 #  WeChat:
-  Github: https://github.com/zdd2018
+  Github: https://github.com/shinchanZ
 
 # how links show: you have 2 choice--text or icon.
 links_text_enable: false
